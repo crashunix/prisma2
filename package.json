@@ -1,0 +1,14 @@
+{
+  "name": "prisma2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/crashunix/prisma2.git",
+  "author": "Juan Gomes Macário <jgomesmacario@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/cli": "^2.3.0",
+    "@types/node": "^14.0.25",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
