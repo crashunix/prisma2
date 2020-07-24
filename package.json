@@ -1,14 +1,25 @@
 {
   "name": "prisma2",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.ts",
   "repository": "https://github.com/crashunix/prisma2.git",
   "author": "Juan Gomes Macário <jgomesmacario@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "start": "nodemon src/index.ts"
+  },
   "dependencies": {
     "@prisma/cli": "^2.3.0",
+    "@prisma/client": "^2.3.0",
+    "@types/express": "^4.17.7",
     "@types/node": "^14.0.25",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.55"
   }
 }

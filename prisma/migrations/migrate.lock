@@ -1,0 +1,4 @@
+# Prisma Migrate lockfile v1
+
+20200724121730-create_user_post_tables
+20200724161323-role-moreinfo

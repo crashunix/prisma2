@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -12,24 +12,15 @@ generator client {
 
 model User {
   id Int @id @default(autoincrement())
-  name String
-  nickname String @unique
+  name String?
   email String @unique
-  role Role @default(USER)
-  password String
   posts Post[]
 }
 
 model Post {
   id Int @id @default(autoincrement())
+  title String?
   text String
   authorId Int
   author User @relation(fields: [authorId], references: [id])
-  publishDate DateTime @default(now())
-  midia String?
-}
-
-enum Role {
-  USER
-  ADMIN
 }
