@@ -5,13 +5,25 @@ const prisma = new PrismaClient();
 module.exports = {
     async index(req, res) {
         const users = await prisma.user.findMany();
-        return res.json(users);
+        if (users) {
+            return res.status(200).json(users);
+        } else {
+            return res.status(500).json({
+                msg: 'Não existem usuários'
+            });
+        }
     },
     async show(req, res) {
         const user = await prisma.user.findOne({
             where: {id: parseInt(req.params.id)}
         });
-        return res.json(user);
+        if (user) {
+            return res.status(200).json(user);
+        } else {
+            return res.status(500).json({
+                msg: 'Usuário inexistente'
+            });
+        }
     },
     async store(req, res) {
         const user = await prisma.user.create({
@@ -23,27 +35,45 @@ module.exports = {
                 password: req.body.password
             }
         });
-        return res.json({
-            msg: 'Usuário criado com sucesso',
-            user: user
-        });
+        if(user) {
+            return res.status(200).json({
+                msg: 'Usuário criado com sucesso',
+                user: user
+            });
+        } else {
+            return res.status(500).json({
+                msg: 'Usuário não inserido'
+            });
+        }
     },
     async update(req, res) {
         const user = await prisma.user.update({
             where: {id: parseInt(req.params.id)},
             data: req.body
         });
-        return res.json({
-            msg: 'Usuário alterado com sucesso',
-            user: user
-        });
+        if(user) {
+            return res.status(200).json({
+                msg: 'Usuário alterado com sucesso',
+                user: user
+            });
+        } else {
+            return res.status(500).json({
+                msg: 'Usuário inválido ou não pode ser alterado'
+            });
+        }
     },
     async delete(req, res) {
-        await prisma.user.delete({
+        const user = await prisma.user.delete({
             where: {id: parseInt(req.params.id)}
         }).then();
-        return res.json({
-            msg: 'Usuário excluido com sucesso',
-        });
+        if(user) {
+            return res.status(200).json({
+                msg: 'Usuário excluido com sucesso',
+            });
+        } else {
+            return res.status(500).json({
+                msg: 'Usuário é invalido ou não pode ser exluido'
+            });
+        }
     }
 }

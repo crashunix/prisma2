@@ -3,6 +3,7 @@ const routes = express.Router();
 
 const users = require('../controllers/users');
 const posts = require('../controllers/posts');
+const account = require('../controllers/account');
 
 //Users
 routes.get('/users', users.index);
@@ -17,5 +18,8 @@ routes.get('/posts/:id', posts.show);
 routes.post('/posts', posts.store);
 routes.put('/posts/:id', posts.update);
 routes.delete('/posts/:id', posts.delete);
+
+//Account
+routes.post('/login', account.login);
 
 module.exports = routes;

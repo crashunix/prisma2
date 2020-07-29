@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -17,7 +17,7 @@ model User {
   email String @unique
   role Role @default(USER)
   password String
-  avatar String? @default("https://vignette.wikia.nocookie.net/naruto/images/5/5f/White_Zetsu.png/revision/latest/scale-to-width-down/340?cb=20150819192239")
+  avatar String @default("https://vignette.wikia.nocookie.net/naruto/images/5/5f/White_Zetsu.png/revision/latest/scale-to-width-down/340?cb=20150819192239")
   posts Post[]
 }
 
